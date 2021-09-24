@@ -1,0 +1,10 @@
+version: '3'
+services:
+  majora-server:
+    image: registry.cn-beijing.aliyuncs.com/virjar/majora:lite
+    container_name: majora-lite
+    ports:
+      - 40000-40100:40000-40100
+      - 30000-30100:30000-30100
+      - 5875:5875
+      - 5879:5879

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  majora-mysql-local:
+    image: mysql:5.7
+    container_name: majora-mysql-local
+    ports:
+      - 4444:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/majora_db_create.sql:/docker-entrypoint-initdb.d/majora_db_create.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: "majora"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  echo-meta-server:
+    image: registry.cn-beijing.aliyuncs.com/virjar/majora:pro
+    container_name: majora-pro
+    ports:
+      - 40000-40100:40000-40100
+      - 30000-30100:30000-30100
+      - 5875:5875
+      - 5879:5879
+    depends_on: 
+      - echo-mysql-local

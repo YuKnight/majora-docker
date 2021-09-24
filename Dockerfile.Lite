@@ -1,0 +1,6 @@
+FROM openjdk:8-alpine
+WORKDIR /opt/majora
+COPY ./majora-lite.zip /opt/majora/
+RUN unzip majora-lite.zip
+RUN mkdir /int-logs && mkdir /int-logs//majora-serve
+ENTRYPOINT [ "sh","./bin/Majora.sh" ]

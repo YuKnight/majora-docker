@@ -21,3 +21,33 @@ Majora是一套完整的代理ip建设集群方案，为代理IP池供应链系�
 
 ## Docker 部署支持
 
+### Docker运行
+
+Docker启动
+
+```sh
+# majora-lite
+docker run -p 5879:5879 -p 5875:5875 \
+-p 30000-30100:30000-30100 \
+-p 40000-40100:40000-40100 \
+--restart=always --name=majora-lite -d registry.cn-beijing.aliyuncs.com/virjar/majora:lite
+
+
+# majora-pro
+docker run -p 5879:5879 -p 5875:5875 \
+-p 30000-30100:30000-30100 \
+-p 40000-40100:40000-40100 \
+--restart=always --name=majora-pro -d registry.cn-beijing.aliyuncs.com/virjar/majora:pro
+
+```
+
+- WORKDIR: /opt/majora
+- 配置文件：/opt/majora/conf/majora.properties  可以使用 -v /srv/majora-conf:/opt/majora/conf 替换掉配置文件
+- 日志配置：/opt/majora/conf/logback.xml 同上
+- 端口号映射请保持和配置文件一致
+
+### Docker-compose
+- docker-compose up -d 
+
+### 构建镜像
+- chmod +x build-image.sh && ./build-image.sh
