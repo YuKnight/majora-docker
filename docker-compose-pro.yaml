@@ -15,7 +15,6 @@ services:
     image: registry.cn-beijing.aliyuncs.com/virjar/majora:pro
     container_name: majora-pro
     ports:
-      - 40000-40100:40000-40100
       - 30000-30100:30000-30100
       - 5875:5875
       - 5879:5879

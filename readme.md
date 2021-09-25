@@ -29,14 +29,11 @@ Docker启动
 # majora-lite
 docker run -p 5879:5879 -p 5875:5875 \
 -p 30000-30100:30000-30100 \
--p 40000-40100:40000-40100 \
 --restart=always --name=majora-lite -d registry.cn-beijing.aliyuncs.com/virjar/majora:lite
-
 
 # majora-pro
 docker run -p 5879:5879 -p 5875:5875 \
 -p 30000-30100:30000-30100 \
--p 40000-40100:40000-40100 \
 --restart=always --name=majora-pro -d registry.cn-beijing.aliyuncs.com/virjar/majora:pro
 
 ```
@@ -45,6 +42,9 @@ docker run -p 5879:5879 -p 5875:5875 \
 - 配置文件：/opt/majora/conf/majora.properties  可以使用 -v /srv/majora-conf:/opt/majora/conf 替换掉配置文件
 - 日志配置：/opt/majora/conf/logback.xml 同上
 - 端口号映射请保持和配置文件一致
+- 查看服务启动是否正常 curl "http://自己的IP:5875/mojora-admin-api/ListClient"
+
+
 
 ### Docker-compose
 - docker-compose up -d 
